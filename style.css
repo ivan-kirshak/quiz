@@ -12,11 +12,13 @@ label {
   border: 1px solid #000;
   cursor: pointer;
 }
-.main-container {
+.main-container, .newQuestion {
   display: flex;
   justify-content: center;
+  width: 50%;
+  margin: auto;
 }
-.questions-container {
+.questions-container, .newQuestion {
   text-align: center;
 }
 .answers {
@@ -26,6 +28,7 @@ label {
 .answerBtn {
   padding: 8px;
   font-size: 16px;
+  margin: 10px;
 }
 .true {
     color: rgb(0, 143, 57);
