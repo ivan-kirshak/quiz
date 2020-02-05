@@ -18,12 +18,13 @@ function check() {
 
 function giveQuestion() {
     const XHR = new XMLHttpRequest();
-    let URI = `https://opentdb.com/api.php?amount=1&type=boolean`;
+    let URI = `https://opentdb.com/api.php?amount=1`;
     XHR.addEventListener("readystatechange", function () {
         if (XHR.status === 200 && XHR.readyState === 4) {
             let result = JSON.parse(XHR.responseText);
-            //console.log(result);
-            newQuestion.innerHTML = `
+            console.log(result);
+            if (result.results[0].type === "boolean") {
+                newQuestion.innerHTML = `
             <h1 class="question">${result.results[0].question}?</h1>
             <div class="answers">
             <label><input name="question" type="radio" class="correct"> ${result.results[0].correct_answer}</label>
@@ -31,6 +32,18 @@ function giveQuestion() {
             </div>
             <button onclick="check()" class="answerBtn">Submit</button>
             `;
+            } else {
+                newQuestion.innerHTML = `
+                <h1 class="question">${result.results[0].question}?</h1>
+                <div class="answers">
+                <label><input name="question" type="radio" class="correct"> ${result.results[0].correct_answer}</label>
+                <label><input name="question" type="radio" > ${result.results[0].incorrect_answers[0]}</label>
+                <label><input name="question" type="radio" > ${result.results[0].incorrect_answers[1]}</label>
+                <label><input name="question" type="radio" > ${result.results[0].incorrect_answers[2]}</label>
+                </div>
+                <button onclick="check()" class="answerBtn">Submit</button>
+                `;
+            }
         }
     }, false);
     XHR.open("GET", URI);
@@ -39,7 +52,7 @@ function giveQuestion() {
 
 function lookForAnswer() {
     for (let i = 0; i < answer.length; i++) {
-        if (answer[2].checked){
+        if (answer[2].checked) {
             results.innerHTML = `<h1 class="true">You're correct!</h1>`
         } else {
             results.innerHTML = `<h1 class="false">Sorry, not true.</h1>`
