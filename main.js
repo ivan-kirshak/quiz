@@ -22,7 +22,7 @@ function giveQuestion() {
     XHR.addEventListener("readystatechange", function () {
         if (XHR.status === 200 && XHR.readyState === 4) {
             let result = JSON.parse(XHR.responseText);
-            console.log(result);
+            //console.log(result);
             if (result.results[0].type === "boolean") {
                 newQuestion.innerHTML = `
             <h1 class="question">${result.results[0].question}?</h1>
