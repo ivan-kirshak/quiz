@@ -6,8 +6,8 @@ let newQuestion = document.getElementById("newQuestion");
 let newResult = document.getElementById("newResult");
 
 function check() {
-    let correct = document.getElementsByClassName("correct");
-    if (correct.checked) {
+    let question = document.getElementsByName("question");
+    if (question[0].checked) {
         newResult.innerHTML = `<h1 class="true">Yes, you're right!. <br>
         To try again, click "Give me another question" button above</h1>`;
     } else {
