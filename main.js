@@ -10,9 +10,15 @@ function check() {
     if (question[0].checked) {
         newResult.innerHTML = `<h1 class="true">Yes, you're right!. <br>
         To try again, click "Give me another question" button above</h1>`;
+        newResult.scrollIntoView({
+            behavior: 'smooth'
+        })
     } else {
         newResult.innerHTML = `<h1 class="false">Sorry, not true. <br>
         To try again, click "Give me another question" button above</h1>`;
+        newResult.scrollIntoView({
+            behavior: 'smooth'
+        })
     }
 }
 
@@ -53,9 +59,15 @@ function giveQuestion() {
 function lookForAnswer() {
     for (let i = 0; i < answer.length; i++) {
         if (answer[2].checked) {
-            results.innerHTML = `<h1 class="true">You're correct!</h1>`
+            results.innerHTML = `<h1 class="true">You're correct!</h1>`;
+            results.scrollIntoView({
+                behavior: 'smooth'
+            })
         } else {
-            results.innerHTML = `<h1 class="false">Sorry, not true.</h1>`
+            results.innerHTML = `<h1 class="false">Sorry, not true.</h1>`;
+            results.scrollIntoView({
+                behavior: 'smooth'
+            })
         }
     }
     //creation of button for another question 
